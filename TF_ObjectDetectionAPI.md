@@ -62,7 +62,7 @@ Steps followed to build a tensorflow model
 
    Once done verify installation of Tensorflow by starting an interpreter session as below
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image008.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935465-324e6680-53e0-11ea-8913-4f257dc15330.png)
 
    *Fig 1. Screenshot of Tensorflow installation verification*
 
@@ -70,7 +70,7 @@ Steps followed to build a tensorflow model
 
    Even if the machine has NVIDIA drivers it should be CUDA enabled, else it cannot run on GPU. To verify whether the NVIDIA runs on CPU/GPU use the following code. (stackoverflow, n.d.)
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image007.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935510-45f9cd00-53e0-11ea-91ed-cb36b9d68d8b.png)
 
    ​        *Fig 2. Screenshot of Tensorflow using device list*
 
@@ -145,7 +145,8 @@ Steps followed to build a tensorflow model
 
    The script needs to be saved in the parent directory of the images and be run like as below.
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image0006.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935555-5a3dca00-53e0-11ea-9e25-69e9eb366cb0.png)
+
 
    ​                              *Fig4. Screenshot of running the script in command line*
 
@@ -163,7 +164,8 @@ Steps followed to build a tensorflow model
 
    The labelImg will be opened, then navigated to Train and Test directory and a box is drawn around each object in each image similar to the screenshot below
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image0008.png)
+![image](https://user-images.githubusercontent.com/34976961/74935616-73467b00-53e0-11ea-9004-f5768a91dc1e.png)
+
 
    ​                              *Fig 5. Labeling the data using the LabelImg tool*
 
@@ -224,7 +226,8 @@ Steps followed to build a tensorflow model
 
    Many modern object detection applications require real-time speed. Methods such as YOLO or SSD tends takes more time to train, whereas models such as Faster R-CNN achieve decent accuracy also takes less time to train. (pkulzc, 2019). 
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image010.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935657-835e5a80-53e0-11ea-9a70-0a3ae306454c.png)
+
 
    *Screenshot of models pre-trained list*
 
@@ -270,7 +273,8 @@ Steps followed to build a tensorflow model
 
     
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image012.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935801-d33d2180-53e0-11ea-9e7d-edec7ec83f53.png)
+
 
    *Screenshot of model training*
 
@@ -290,7 +294,8 @@ Steps followed to build a tensorflow model
 
    This command will start a new tensorboard server listening to port 6006 by default. Hence in the console it ouputs the url to access the Tensorboard as “TensorBoard 1.14.0 at http://PC_NAME:6006 (Press CTRL+C to quit)”. On navigating to the server the dashboard will be presented as shown below. 
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image014.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935939-18f9ea00-53e1-11ea-8310-9797bd025e6e.png)
+
 
    The reason behind tensorboard is that neural network can be something known as a black box and we need a tool to inspect what's inside this box. Imagine tensorboard as a flashlight to start dive into the neural network.
 
@@ -320,11 +325,12 @@ Steps followed to build a tensorflow model
 
    After the first set of training, On testing the happy path ,the model is trained to detect F1 cars on high accuracy. However, when testing the negative cases, where F1 with Bike or other cars, it detects those objects as F1. This was a major challenge. This is because of the over training of the model. (Yadam, 2018)The model is retrained for the loss around 0.06 as in below image. 
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image015.png)
+![image](https://user-images.githubusercontent.com/34976961/74935959-21522500-53e1-11ea-954e-1a93323c33f6.png)
+
 
    However, the results seem the same. This is because the model is not learning when there is a huge fluctuation in the loss for example
 
-   ![img](C:\Users\91979\Desktop\GithubImages\clip_image017.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935981-2fa04100-53e1-11ea-8787-e2ca3b343163.png)
 
    The objective is to minimize the loss function through the training. In different words, it means the model is making fewer errors. All machine learning algorithms will repeat many times the computations until the loss reach a flatter line. Minimization of this loss function depends on the learning rate ( speed the model learns). If learning rate is too high, the model does not have time to learn anything. However, on checking the learning rate defined in the model,  it is 0.0002 which is low when compared to the other model. Then on further research, it is found that the model is not learning because it is trained for one class and it automatically creates another class called background. The background is trained using the regions of the training images that are not labelled as the desired classes (in your case, F1). The solution is to add training samples that include images that have both F1 and the objects that shouldn’t be recognized as F1, in the same scene. Also increasing the number of epochs should improve the precision (stackoverflow, 2019)
 
