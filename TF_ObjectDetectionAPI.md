@@ -2,7 +2,7 @@
 
 With ongoing advancements in deep learning-based computer vision models, object detection applications are simpler to build than ever before. Object detection is an advancement to image classification. In general, Image classification involves categorizing an image by assigning a label to it whereas, object detection involves classifying the object inside the images by assigning a label to them. *(Hulstaert, 2018).* An example of object detection is as given below 
 
-![img](C:\Users\91979\Desktop\GithubImages\clip_image002.jpg)
+![image](https://user-images.githubusercontent.com/34976961/74935161-b5bb8800-53df-11ea-8788-984be771711f.png)
 
 The TensorFlow [Models](https://github.com/tensorflow/models) GitHub repository provides an excellent object detection API. This object detection API by Google makes it extremely easy to train your own object detection model for a large variety of different applications. In this assignment, Tensorflow Object Detection API was trained and validated for detection of Formula 1 cars. will have the detailed steps for building a Formula 1 Object detection model using TensorFlow’s API. 
 
